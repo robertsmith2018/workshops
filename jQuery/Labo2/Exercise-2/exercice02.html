@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script src="script/jquery-3.3.1.js"></script>
+
+  <script type="text/javascript">
+
+      var compteur=0;
+      var tabAdresse = [];
+      var tab ="";
+
+      function Adresse(numero, rue, ville, codepostal){
+        this.numero = numero;
+        this.rue= rue;
+        this.ville = ville;
+        this.codepostal = codepostal;
+        this.afficher = function(){
+          tab += "<tr><td>" + this.numero + "</td><td>" + this.rue + "</td><td>" + this.ville + "</td><td>" + this.codepostal + "</td></tr>" ;
+        }
+
+        this.estValide= function() {
+            var expReg = new RegExp("^[a-zA-Z][0-9][a-zA-Z] [0-9][a-zA-Z][0-9]$");
+            if(!expReg.test(codepostal)){
+              return false;
+            }
+        }
+      }
+
+    function valider(){
+
+    var numero = document.formAdresse.txtNumero.value;
+    var rue = document.formAdresse.txtRue.value;
+    var ville = document.formAdresse.txtVille.value;
+    var codePostal = document.formAdresse.txtCodePostal.value;
+
+    tabAdresse[compteur] = new Adresse(numero,rue,ville,codePostal);
+    if (tabAdresse[compteur].estValide() == false){
+      alert("Code Postal incorrect!!");
+    }else{
+      tabAdresse[compteur].afficher();
+    }
+
+
+    document.getElementById('liste').innerHTML = tab;
+    compteur++;
+    }
+
+  </script>
+  <style media="screen">
+      label{
+        display: inline-block;
+        width: 200px;
+      }
+  </style>
+
+</head>
+<body>
+
+  <form action="" name="formAdresse">
+
+  <label for="idNumero">Numero :</label>
+  <input type="text" name="txtNumero" id="idNumero">
+<br>
+  <label for="idRue">Rue :</label>
+  <input type="text" name="txtRue" id="idRue">
+<br>
+  <label for="idVille">Ville :</label>
+  <input type="text" name="txtVille" id="idVille">
+<br>
+  <label for="idCodepostal">Code postal :</label>
+  <input type="text" name="txtCodePostal" id="idCodepostal">
+
+
+  <input type="button" name="" value="Creer" onclick="valider();">
+</form>
+
+<br>
+
+<div id="affichage">
+  <table border="1" width="500px">
+    <thead>
+      <th>Numero</th>
+      <th>Rue</th>
+      <th>Ville</th>
+      <th>Code Postal</th>
+    </thead>
+    <tbody id="liste">
+
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

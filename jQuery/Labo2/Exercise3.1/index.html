@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script src="scripts/jquery-3.3.1.js">
+</script>
+</head>
+
+<body>
+
+<script type="text/javascript" src="scripts/jquery-3.3.1.js">
+</script>
+
+<script type="text/javascript">
+	function Adresse(numero, nomRue, ville, codePostal, province){
+		this.numero = numero;
+		this.nomRue = nomRue;
+		this.ville = ville;
+		this.codePostal = codePostal;
+		this.province = province;
+		this.afficher = function(){
+			var adresse = this.numero + " " + this.nomRue;
+			adresse += "," +ville +","+codePostal;
+			adresse +=","+province;
+			alert(adresse);
+		}
+		
+		this.estValide = function(){
+			var regExp = new RegExp("^[a-zA-Z][0-9][a-zA-Z][ ][0-9][a-zA-Z][0-9]$","g");
+				return regExp.test((this.codePostal));
+
+		}
+
+	}
+		var obj = new Adresse("2100", "Rue Guy", "Montreal", "H1M 2GM", "Quebec");
+		obj.afficher();
+		alert(obj.estValide());
+
+</script>
+</head>
+
+<body>
+	
+</body>
+</html>
+
+</body>
+</html>

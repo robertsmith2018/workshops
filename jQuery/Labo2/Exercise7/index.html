@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="scripts/jquery-3.3.1.js"></script>
+
+  <script type="text/javascript">
+  
+  function dump (obj){
+	  var txt ="";
+	  $.each(obj, function(key, value)
+	  {
+		  txt += key + "=" +value +"\n";
+	  });
+	  alert(txt);
+  }
+   
+   var obj1 = { nom:"Sarrion", prenom :"Eric"};
+   var obj2 = {
+	   setAge : function(age)
+	   {
+		   this.age = age;
+	   }
+   };
+   
+   var obj = $.extend({},obj1, obj2);
+   
+   dump(obj);
+   obj2.setAge(40);
+   var obj = $.extend({},obj1, obj2);
+   dump(obj);
+   
+/*   dump(obj1);
+   $.extend(obj1, obj2);
+   dump(obj1);
+   
+   obj1.setAge(40);
+   dump(obj1);
+   */
+
+  </script>
+</head>
+<body">
+
+</body>
+</html>
